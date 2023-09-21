@@ -9,6 +9,10 @@
     <p>Season: {{ series.seasons }}</p>
     <p>IMDB Rating: {{ series.rating }}</p>
   </div>
+  <div class="card-action">
+    <a href="{% url 'series_update' series.id %}">Edit</a>
+    <a href="{% url 'series_delete' series.id %}">Delete</a>
+  </div>
 </div>
 
 {% endblock %}

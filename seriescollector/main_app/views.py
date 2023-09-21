@@ -1,6 +1,7 @@
 from django.shortcuts import render
-from django.views.generic.edit import CreateView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import Series 
+
 
 # series = [
 #   {'title': 'You', 'seasons': 4, 'genre': 'Thriller', 'rating': 7.7 }, 
@@ -34,3 +35,16 @@ def series_detail(request, series_id):
 class SeriesCreate(CreateView):
   model = Series
   fields = '__all__'
+  # Special string pattern Django will use
+  success_url = '/series/{series_id}' # <--- must specify an exact ID
+  # Or..more fitting... you want to just redirect to the index page
+  # success_url = '/series'
+
+class SeriesUpdate(UpdateView):
+  model = Series
+  # Let's disallow the renaming of a cat by excluding the name field!
+  fields = ['seasons', 'genre', 'rating']
+
+class SeriesDelete(DeleteView):
+  model = Series
+  success_url = '/series'

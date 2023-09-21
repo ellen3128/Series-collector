@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 
 # Create your models here.
 class Series(models.Model):
@@ -13,4 +14,7 @@ class Series(models.Model):
 #   {'title': 'Inventing Anna', 'seasons': 1, 'genre': 'Drama', 'rating': 6.8 }, 
 
 def __str__(self):
-    return self.name
+    return f'{self.name} ({self.id})'
+
+def get_absolute_url(self):
+    return reverse('detail', kwargs={'series_id': self.id})
