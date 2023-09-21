@@ -25,3 +25,7 @@ def series_index(request):
     'series': series
   }
 )
+
+def series_detail(request, series_id):
+  series = Series.objects.get(id=series_id)
+  return render(request, 'series/detail.html', { 'series': series })
