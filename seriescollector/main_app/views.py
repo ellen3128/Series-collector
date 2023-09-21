@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.views.generic.edit import CreateView
 from .models import Series 
 
 # series = [
@@ -29,3 +30,7 @@ def series_index(request):
 def series_detail(request, series_id):
   series = Series.objects.get(id=series_id)
   return render(request, 'series/detail.html', { 'series': series })
+
+class SeriesCreate(CreateView):
+  model = Series
+  fields = '__all__'
