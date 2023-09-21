@@ -13,8 +13,8 @@ class Series(models.Model):
 #   {'title': 'Black Mirror', 'seasons': 6, 'genre': 'Sci-fi', 'rating': 8.7 }, 
 #   {'title': 'Inventing Anna', 'seasons': 1, 'genre': 'Drama', 'rating': 6.8 }, 
 
-def __str__(self):
-    return f'{self.name} ({self.id})'
+    def __str__(self):
+        return f'{self.name} ({self.id})'
 
-def get_absolute_url(self):
-    return reverse('detail', kwargs={'series_id': self.id})
+    def get_absolute_url(self):
+        return reverse('detail', kwargs={'series_id': self.id})
